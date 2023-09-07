@@ -106,7 +106,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '¡Bienvenido!',
+                                    '¡Bienvenido!🤓',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
