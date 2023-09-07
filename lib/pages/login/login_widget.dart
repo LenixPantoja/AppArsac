@@ -56,22 +56,28 @@ class _LoginWidgetState extends State<LoginWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Container(
-                      width: 350.0,
-                      height: 350.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(100.0),
-                          child: Image.asset(
-                            'assets/images/Black_Yellow_Minimalist_Brain_Logo.png',
-                            width: 300.0,
-                            height: 300.0,
-                            fit: BoxFit.cover,
+                    Material(
+                      color: Colors.transparent,
+                      elevation: 15.0,
+                      shape: const CircleBorder(),
+                      child: Container(
+                        width: 350.0,
+                        height: 350.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(100.0),
+                            child: Image.asset(
+                              'assets/images/Black_Yellow_Minimalist_Brain_Logo.png',
+                              width: 300.0,
+                              height: 300.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
@@ -100,13 +106,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Bienvenido',
+                                    '¡Bienvenido!',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Roboto',
                                           fontSize: 22.0,
-                                          fontWeight: FontWeight.normal,
+                                          fontWeight: FontWeight.w900,
                                         ),
                                   ),
                                   Padding(
@@ -123,6 +129,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             .override(
                                               fontFamily: 'Readex Pro',
                                               color: Colors.black,
+                                              fontWeight: FontWeight.w800,
                                             ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium,
@@ -160,13 +167,19 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           borderRadius:
                                               BorderRadius.circular(50.0),
                                         ),
+                                        prefixIcon: Icon(
+                                          Icons.person,
+                                        ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Roboto',
                                             color: Colors.black,
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.w900,
                                           ),
+                                      textAlign: TextAlign.start,
                                       validator: _model.textController1Validator
                                           .asValidator(context),
                                     ),
@@ -185,6 +198,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             .override(
                                               fontFamily: 'Readex Pro',
                                               color: Colors.black,
+                                              fontWeight: FontWeight.w800,
                                             ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium,
@@ -221,6 +235,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(50.0),
+                                        ),
+                                        prefixIcon: Icon(
+                                          Icons.lock,
+                                          size: 15.0,
                                         ),
                                         suffixIcon: InkWell(
                                           onTap: () => setState(
@@ -242,6 +260,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Roboto',
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.w900,
                                           ),
                                       textAlign: TextAlign.start,
                                       validator: _model.textController2Validator
@@ -256,6 +276,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         print('Button pressed ...');
                                       },
                                       text: 'Iniciar sesión',
+                                      icon: Icon(
+                                        Icons.login_rounded,
+                                        size: 15.0,
+                                      ),
                                       options: FFButtonOptions(
                                         height: 40.0,
                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -269,6 +293,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             .override(
                                               fontFamily: 'Readex Pro',
                                               color: Colors.black,
+                                              fontWeight: FontWeight.w800,
                                             ),
                                         elevation: 15.0,
                                         borderSide: BorderSide(
@@ -277,6 +302,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         ),
                                         borderRadius:
                                             BorderRadius.circular(50.0),
+                                        hoverColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        hoverBorderSide: BorderSide(
+                                          color: Colors.black,
+                                          width: 2.0,
+                                        ),
                                       ),
                                     ),
                                   ),
