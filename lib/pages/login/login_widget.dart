@@ -24,8 +24,8 @@ class _LoginWidgetState extends State<LoginWidget> {
     super.initState();
     _model = createModel(context, () => LoginModel());
 
-    _model.textController1 ??= TextEditingController();
-    _model.textController2 ??= TextEditingController();
+    _model.txtUsuarioController ??= TextEditingController();
+    _model.txtContrasenaController ??= TextEditingController();
   }
 
   @override
@@ -38,12 +38,14 @@ class _LoginWidgetState extends State<LoginWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Color(0xFFFAD02C),
         body: Align(
-          alignment: AlignmentDirectional(0.0, 0.0),
+          alignment: AlignmentDirectional(0.00, 0.00),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
             child: Container(
@@ -58,20 +60,22 @@ class _LoginWidgetState extends State<LoginWidget> {
                   children: [
                     Material(
                       color: Colors.transparent,
-                      elevation: 15.0,
+                      elevation: 14.0,
                       shape: const CircleBorder(),
                       child: Container(
                         width: 350.0,
                         height: 350.0,
                         decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
+                          color: Colors.white,
                           shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.white,
+                          ),
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(100.0),
+                            borderRadius: BorderRadius.circular(120.0),
                             child: Image.asset(
                               'assets/images/Black_Yellow_Minimalist_Brain_Logo.png',
                               width: 300.0,
@@ -99,7 +103,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             borderRadius: BorderRadius.circular(20.0),
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.00, 0.00),
                             child: SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -111,6 +115,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Roboto',
+                                          color: Colors.black,
                                           fontSize: 22.0,
                                           fontWeight: FontWeight.w900,
                                         ),
@@ -119,7 +124,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 40.0, 8.0, 0.0),
                                     child: TextFormField(
-                                      controller: _model.textController1,
+                                      controller: _model.txtUsuarioController,
                                       autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -132,7 +137,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                                               fontWeight: FontWeight.w800,
                                             ),
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Colors.black,
@@ -180,7 +191,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             fontWeight: FontWeight.w900,
                                           ),
                                       textAlign: TextAlign.start,
-                                      validator: _model.textController1Validator
+                                      validator: _model
+                                          .txtUsuarioControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -188,9 +200,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 30.0, 8.0, 0.0),
                                     child: TextFormField(
-                                      controller: _model.textController2,
+                                      controller:
+                                          _model.txtContrasenaController,
                                       autofocus: true,
-                                      obscureText: !_model.passwordVisibility,
+                                      obscureText:
+                                          !_model.txtContrasenaVisibility,
                                       decoration: InputDecoration(
                                         labelText: 'CONTRASEÑA',
                                         labelStyle: FlutterFlowTheme.of(context)
@@ -198,10 +212,17 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             .override(
                                               fontFamily: 'Readex Pro',
                                               color: Colors.black,
+                                              fontSize: 14.0,
                                               fontWeight: FontWeight.w800,
                                             ),
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Colors.black,
@@ -220,8 +241,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         ),
                                         errorBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
+                                            color: Color(0xFFFB091A),
                                             width: 2.0,
                                           ),
                                           borderRadius:
@@ -229,8 +249,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
+                                            color: Color(0xFFFB091A),
                                             width: 2.0,
                                           ),
                                           borderRadius:
@@ -242,13 +261,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         ),
                                         suffixIcon: InkWell(
                                           onTap: () => setState(
-                                            () => _model.passwordVisibility =
-                                                !_model.passwordVisibility,
+                                            () => _model
+                                                    .txtContrasenaVisibility =
+                                                !_model.txtContrasenaVisibility,
                                           ),
                                           focusNode:
                                               FocusNode(skipTraversal: true),
                                           child: Icon(
-                                            _model.passwordVisibility
+                                            _model.txtContrasenaVisibility
                                                 ? Icons.visibility_outlined
                                                 : Icons.visibility_off_outlined,
                                             color: Colors.black,
@@ -259,12 +279,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Roboto',
-                                            fontSize: 18.0,
-                                            fontWeight: FontWeight.w900,
+                                            fontFamily: 'Readex Pro',
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal,
                                           ),
                                       textAlign: TextAlign.start,
-                                      validator: _model.textController2Validator
+                                      cursorColor: Colors.black,
+                                      validator: _model
+                                          .txtContrasenaControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -278,6 +300,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       text: 'Iniciar sesión',
                                       icon: Icon(
                                         Icons.login_rounded,
+                                        color: Color(0xFF060606),
                                         size: 15.0,
                                       ),
                                       options: FFButtonOptions(
@@ -308,6 +331,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           color: Colors.black,
                                           width: 2.0,
                                         ),
+                                        hoverTextColor: Colors.black,
                                       ),
                                     ),
                                   ),
