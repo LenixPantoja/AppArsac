@@ -294,8 +294,19 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        context.pushNamed(
+                                          'inicio',
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType: PageTransitionType
+                                                  .topToBottom,
+                                              duration:
+                                                  Duration(milliseconds: 300),
+                                            ),
+                                          },
+                                        );
                                       },
                                       text: 'Iniciar sesión',
                                       icon: Icon(

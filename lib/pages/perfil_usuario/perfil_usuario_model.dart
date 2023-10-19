@@ -1,16 +1,23 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'homepage_widget.dart' show HomepageWidget;
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'perfil_usuario_widget.dart' show PerfilUsuarioWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class HomepageModel extends FlutterFlowModel<HomepageWidget> {
+class PerfilUsuarioModel extends FlutterFlowModel<PerfilUsuarioWidget> {
+  ///  State fields for stateful widgets in this page.
+
+  final unfocusNode = FocusNode();
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
-  void dispose() {}
+  void dispose() {
+    unfocusNode.dispose();
+  }
 
   /// Action blocks are added here.
 

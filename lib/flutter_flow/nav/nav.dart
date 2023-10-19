@@ -59,11 +59,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => InicioWidget(),
         ),
         FFRoute(
-          name: 'asistencia',
-          path: '/asistencia',
-          builder: (context, params) => AsistenciaWidget(),
-        ),
-        FFRoute(
           name: 'reportes',
           path: '/reportes',
           builder: (context, params) => ReportesWidget(),
@@ -72,6 +67,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'observaciones',
           path: '/observaciones',
           builder: (context, params) => ObservacionesWidget(),
+        ),
+        FFRoute(
+          name: 'PerfilUsuario',
+          path: '/perfilUsuario',
+          builder: (context, params) => PerfilUsuarioWidget(),
+        ),
+        FFRoute(
+          name: 'Asistencia',
+          path: '/asistencia',
+          builder: (context, params) => AsistenciaWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
