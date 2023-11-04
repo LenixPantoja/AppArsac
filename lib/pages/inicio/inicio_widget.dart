@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +40,15 @@ class _InicioWidgetState extends State<InicioWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -336,19 +346,8 @@ class _InicioWidgetState extends State<InicioWidget> {
                                       color: Color(0xFFFAF3E3),
                                       size: 80.0,
                                     ),
-                                    onPressed: () async {
-                                      context.pushNamed(
-                                        'Asistencia',
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.leftToRight,
-                                            duration:
-                                                Duration(milliseconds: 300),
-                                          ),
-                                        },
-                                      );
+                                    onPressed: () {
+                                      print('IconButton pressed ...');
                                     },
                                   ),
                                 ),
@@ -395,19 +394,8 @@ class _InicioWidgetState extends State<InicioWidget> {
                                       color: Color(0xFFFAF3E3),
                                       size: 80.0,
                                     ),
-                                    onPressed: () async {
-                                      context.pushNamed(
-                                        'reportes',
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.leftToRight,
-                                            duration:
-                                                Duration(milliseconds: 300),
-                                          ),
-                                        },
-                                      );
+                                    onPressed: () {
+                                      print('IconButton pressed ...');
                                     },
                                   ),
                                 ),
@@ -444,19 +432,8 @@ class _InicioWidgetState extends State<InicioWidget> {
                                       color: Color(0xFFFAF3E3),
                                       size: 80.0,
                                     ),
-                                    onPressed: () async {
-                                      context.pushNamed(
-                                        'observaciones',
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.leftToRight,
-                                            duration:
-                                                Duration(milliseconds: 300),
-                                          ),
-                                        },
-                                      );
+                                    onPressed: () {
+                                      print('IconButton pressed ...');
                                     },
                                   ),
                                 ),

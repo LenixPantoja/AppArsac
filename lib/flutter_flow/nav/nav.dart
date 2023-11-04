@@ -36,12 +36,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => LoginWidget(),
+      errorBuilder: (context, state) => ReporteAsistenciaWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => LoginWidget(),
+          builder: (context, _) => ReporteAsistenciaWidget(),
         ),
         FFRoute(
           name: 'Horario',
@@ -59,11 +59,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => InicioWidget(),
         ),
         FFRoute(
-          name: 'reportes',
-          path: '/reportes',
-          builder: (context, params) => ReportesWidget(),
-        ),
-        FFRoute(
           name: 'observaciones',
           path: '/observaciones',
           builder: (context, params) => ObservacionesWidget(),
@@ -77,6 +72,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Asistencia',
           path: '/asistencia',
           builder: (context, params) => AsistenciaWidget(),
+        ),
+        FFRoute(
+          name: 'CarnetAsistencia',
+          path: '/carnetAsistencia',
+          builder: (context, params) => CarnetAsistenciaWidget(),
+        ),
+        FFRoute(
+          name: 'ReporteAsistencia',
+          path: '/reporteAsistencia',
+          builder: (context, params) => ReporteAsistenciaWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

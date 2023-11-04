@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'menu_model.dart';
@@ -61,7 +62,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     kTransitionInfoKey: TransitionInfo(
                       hasTransition: true,
                       transitionType: PageTransitionType.leftToRight,
-                      duration: Duration(milliseconds: 2000),
+                      duration: Duration(milliseconds: 200),
                     ),
                   },
                 );
@@ -73,28 +74,10 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
           ),
-          InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              context.pushNamed(
-                'reportes',
-                extra: <String, dynamic>{
-                  kTransitionInfoKey: TransitionInfo(
-                    hasTransition: true,
-                    transitionType: PageTransitionType.leftToRight,
-                    duration: Duration(milliseconds: 3000),
-                  ),
-                },
-              );
-            },
-            child: Icon(
-              Icons.manage_search_outlined,
-              color: Color(0xFF293035),
-              size: 50.0,
-            ),
+          Icon(
+            Icons.manage_search_outlined,
+            color: Color(0xFF293035),
+            size: 50.0,
           ),
           InkWell(
             splashColor: Colors.transparent,
@@ -108,7 +91,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                   kTransitionInfoKey: TransitionInfo(
                     hasTransition: true,
                     transitionType: PageTransitionType.leftToRight,
-                    duration: Duration(milliseconds: 2000),
+                    duration: Duration(milliseconds: 200),
                   ),
                 },
               );
@@ -133,7 +116,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                     kTransitionInfoKey: TransitionInfo(
                       hasTransition: true,
                       transitionType: PageTransitionType.leftToRight,
-                      duration: Duration(milliseconds: 2000),
+                      duration: Duration(milliseconds: 200),
                     ),
                   },
                 );

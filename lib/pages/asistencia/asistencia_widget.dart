@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'asistencia_model.dart';
@@ -37,6 +38,15 @@ class _AsistenciaWidgetState extends State<AsistenciaWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -74,7 +84,7 @@ class _AsistenciaWidgetState extends State<AsistenciaWidget> {
                                 Align(
                                   alignment: AlignmentDirectional(0.00, 0.00),
                                   child: Text(
-                                    '🗂️Asistencia🖊️',
+                                    '🗂️ Asistencia 🖊️',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -114,7 +124,7 @@ class _AsistenciaWidgetState extends State<AsistenciaWidget> {
                                             AlignmentDirectional(0.00, 0.00),
                                         child: FlutterFlowDropDown<String>(
                                           controller: _model
-                                                  .dropDownValueController ??=
+                                                  .dropDownValueController1 ??=
                                               FormFieldController<String>(null),
                                           options: [
                                             'Quinto 1',
@@ -132,8 +142,8 @@ class _AsistenciaWidgetState extends State<AsistenciaWidget> {
                                             'Once 1',
                                             'Once 2'
                                           ],
-                                          onChanged: (val) => setState(
-                                              () => _model.dropDownValue = val),
+                                          onChanged: (val) => setState(() =>
+                                              _model.dropDownValue1 = val),
                                           width: 383.0,
                                           height: 50.0,
                                           textStyle:
@@ -145,10 +155,8 @@ class _AsistenciaWidgetState extends State<AsistenciaWidget> {
                                                   ),
                                           hintText: 'Seleccione Curso',
                                           icon: Icon(
-                                            Icons.keyboard_arrow_down_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 24.0,
+                                            Icons.school_sharp,
+                                            size: 15.0,
                                           ),
                                           fillColor:
                                               FlutterFlowTheme.of(context)
@@ -169,8 +177,190 @@ class _AsistenciaWidgetState extends State<AsistenciaWidget> {
                                       ),
                                     ],
                                   ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 0.00),
+                                    child: Card(
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      elevation: 4.0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.00, 0.00),
+                                                  child: FlutterFlowDropDown<
+                                                      String>(
+                                                    controller: _model
+                                                            .dropDownValueController2 ??=
+                                                        FormFieldController<
+                                                            String>(null),
+                                                    options: [
+                                                      'Fisica',
+                                                      'Matematicas',
+                                                      'Religion',
+                                                      'E.D Fisica',
+                                                      'Quimica',
+                                                      'Ciencias Naturales',
+                                                      'Español',
+                                                      'Ingles',
+                                                      'Etica Y Valores',
+                                                      'Artes Plasticas'
+                                                    ],
+                                                    onChanged: (val) =>
+                                                        setState(() => _model
+                                                                .dropDownValue2 =
+                                                            val),
+                                                    width: 383.0,
+                                                    height: 50.0,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleLarge
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          fontSize: 19.0,
+                                                        ),
+                                                    hintText:
+                                                        'Seleccione Materia',
+                                                    icon: Icon(
+                                                      Icons.menu_book,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 24.0,
+                                                    ),
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                    elevation: 2.0,
+                                                    borderColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
+                                                    borderWidth: 2.0,
+                                                    borderRadius: 8.0,
+                                                    margin:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 4.0,
+                                                                16.0, 4.0),
+                                                    hidesUnderline: true,
+                                                    isSearchable: false,
+                                                    isMultiSelect: false,
+                                                  ),
+                                                ),
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [],
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 18.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Listado De Estudiantes 🗣️',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontWeight: FontWeight.w900,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 0.0),
+                        child: Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          elevation: 4.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Container(
+                                  width: double.infinity,
+                                  height: 100.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Text(
+                                            'ID',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                          ),
+                                          Text(
+                                            'Nombres',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                          ),
+                                          Text(
+                                            'Asisencia',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
